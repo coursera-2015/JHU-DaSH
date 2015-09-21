@@ -66,3 +66,6 @@ Attibute Lable/Value :
 9 - Outlying Areas (AS, FM, GU, MH, MP, PR, PW, VI)
 ```
 
+## Git
+
+How to update your fork: https://gist.github.com/seankross/8249845

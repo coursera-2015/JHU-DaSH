@@ -17,7 +17,6 @@
 - Region of college vs region of employment opportunities
 - Sports budget vs tuition/region/cost
 - Racial and ethnic demographics across schools
-- 
 
 
 ##Earnings Information

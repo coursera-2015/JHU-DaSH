@@ -21,7 +21,22 @@
 
 
 ##Earnings Information
+From the page:
+https://collegescorecard.ed.gov/data/
 
+There are two files under featured downloads:
+Post School Earnings (the Treasury CSV) has the earnings data.
+Most+Recent+Cohorts+(Treasury+Elements).csv
+The fields start with mn_earn_wne*
+
+The costs are in the scorecard csv:
+Most+Recent+Cohorts(Scorecard+Elements).csv
+In particular, look at the fields:
+NPT4_PUB
+NPT4_PRIV
+
+
+##API Information 
 Data API signup:
 https://api.data.gov/signup
 

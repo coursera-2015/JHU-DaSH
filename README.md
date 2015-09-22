@@ -55,7 +55,6 @@ Note: you must sign up for an API key and then append:
 ## ZIP code : ZIP
 ## Accreditor for institution : AccredAgency
 ## URL for institution's homepage : INSTURL
-## Average net price for Title IV institutions (public institutions)	: NPT4_PUB
 ## Average net price for Title IV institutions (public institutions)  : NPT4_PUB
 ## Average net price for Title IV institutions (private for-profit and nonprofit institutions) : NPT4_PRIV
 ## The original amount of the loan principal upon entering repayment	DEBT_MDN				

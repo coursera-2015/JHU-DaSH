@@ -64,8 +64,7 @@ Attibute Lable/Value :
   7 - Rocky Mountains (CO, ID, MT, UT, WY)
   8 - Far West (AK, CA, HI, NV, OR, WA)
   9 - Outlying Areas (AS, FM, GU, MH, MP, PR, PW, VI)
-```
-...
+
 ## Locale of institution
 Variable Name : LOCALE
 Data type : Integer
@@ -84,7 +83,8 @@ Attibute Lable/Value :
   41	Rural: Fringe (rural territory up to 5 miles from an urbanized area or up to 2.5 miles from an urban cluster)
   42	Rural: Distant (rural territory more than 5 miles but up to 25 miles from an urbanized area or more than 2.5 and up to   10 miles from an urban cluster)
   43	Rural: Remote (rural territory more than 25 miles from an urbanized area and more than 10 miles from an urban cluster)
-...
+
+```
 
 ## Git
 

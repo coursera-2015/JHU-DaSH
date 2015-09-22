@@ -1,0 +1,10 @@
+ROI,mn_earn_wne_p10,averageNetPrice,INSTNM,isPublic,REGION,UGDS,LOCALE,SAT_AVG_ALL,major
+5.576208178,75000,13450,Alabama A & M University,1,SOUTH,1873,URBAN,333,pharmacy
+3.717472119,50000,13450,Alabama A & M University,1,SOUTH,1873,URBAN,333,business
+1.486988848,20000,13450,Alabama A & M University,1,SOUTH,1873,URBAN,333,literature
+6.505421184,78000,11990,University of Georgia,1,SOUTH,1328,RURAL,227,pharmacy
+5.254378649,63000,11990,University of Georgia,1,SOUTH,1328,RURAL,227,computer science
+2.085070892,25000,11990,University of Georgia,1,SOUTH,1328,RURAL,227,history
+3.240703233,80000,24686,Cornell University,0,NORTH,872,SMALL TOWN,289,computer science
+2.227983472,55000,24686,Cornell University,0,NORTH,872,SMALL TOWN,289,business
+0.810175808,20000,24686,Cornell University,0,NORTH,872,SMALL TOWN,289,philosophy

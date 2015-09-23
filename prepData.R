@@ -1,4 +1,3 @@
-#some of this stuff not used
 library(Metrics) #for errors
 library(caret) #for dummy vars
 library(data.table)
@@ -23,9 +22,8 @@ cost = scorecard
 earn = fread("./earningsDataTrunc.csv", stringsAsFactors=FALSE)
 reg = fread("/home/wally/jhudsh/reg.csv", stringsAsFactors=FALSE)
 cost = cbind(cost, reg)
-#earn$INSTNM = as.factor(earn$INSTNM)
 
-cost = subset(cost, select=-c(NPCURL,INSTURL,INSTNM,NPT4_PUB,NPT4_PRIV)) ##,NPT4_PUB,NPT4_PRIV,INSTNM))
+cost = subset(cost, select=-c(NPCURL,INSTURL,INSTNM,NPT4_PUB,NPT4_PRIV))
 
 for (i in colnames(cost))
 {
@@ -40,13 +38,11 @@ for (i in colnames(cost))
         cost[[i]] = as.numeric(cost[[i]])   
     }
 }
-    
-#not sure why this doesn't work
-#train = as.data.table(earn, cost, by.x="UNITID", by.y="UNITID")
+
 train = as.data.table(merge(as.data.frame(earn),as.data.frame(cost), by.x="UNITID", 
                             by.y="UNITID", all.x=TRUE))
 
-#Remove NA's, etc so xgboost doesn't bitch
+#Remove NA's, etc so xgboost doesn't complain
 ok = complete.cases(train)
 
 train = train[ok,]

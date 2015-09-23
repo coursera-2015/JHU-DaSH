@@ -1,10 +1,15 @@
 library(shiny)
 
-shinyUI(pageWithSidebar(
-  headerPanel("Cost of College"),
-  sidebarPanel(
-    h3('Inputs'),
-    selectInput("selMajor", "Major:", 
+shinyUI(fluidPage(
+  theme = "bootstrap.css",
+  titlePanel(h1("Cost of College", align="Left"),
+             windowTitle = "Cost of College"),
+  fluidRow(
+    column(3,
+    h3('Inputs'))),
+    fluidRow(
+      column(3,
+             selectInput("selMajor", "Major:", 
                 choices = list(
                   "Agriculture" = "nPCIP01",    
                   "Conservation" = "nPCIP03",
@@ -26,9 +31,10 @@ shinyUI(pageWithSidebar(
                   "Public" = "1",    
                   "Private" = "0"
                 ),
-                selected = "1"),
-    
-     selectInput("selLocale", "Location:", 
+                selected = "1")
+    ),
+    column(4, offset = 1,
+           selectInput("selLocale", "Location:", 
                 choices = list(
                   "City: Large" = 11,
                   "City: Midsize" = 12,
@@ -57,32 +63,39 @@ shinyUI(pageWithSidebar(
                   "Far West (AK, CA, HI, NV, OR, WA)" = 8,
                   "Outlying Areas (AS, FM, GU, MH, MP, PR, PW, VI)" = 9
                 ), 
-                selected=5),
-    sliderInput("selSAT", "Average SAT", min = 100, max=1000, value=200, step = 10),
-    sliderInput('slPopulation', 'Number of students', min = 500, max = 2000, value = 1000, step = 100),
+                selected=5)
+    ),
+    column(4,
+    sliderInput("selSAT", "Average SAT:", min = 100, max=1000, value=200, step = 10),
+    sliderInput('slPopulation', 'Number of students:', min = 500, max = 2000, value = 1000, step = 100)
 
-    h5('______________________'),    
-    radioButtons("rdoModel", label = h4("Choose a Prediction Model"),
-                 choices = list("Linear" = "lm", "Random Forest" = "rf"), 
-                 selected = "lm")
-    
+  )),
+   fluidRow(
+     column(3,
+     h5('______________________'),    
+     radioButtons("rdoModel", label = h4("Choose a Prediction Model"),
+                  choices = list("Linear" = "lm", "Random Forest" = "rf"), 
+                  selected = "lm")
 
-  ),
-  mainPanel(
-    h3('Your selections'),
-    h4('Major: '),
-    verbatimTextOutput('selectedMajor'), 
-    h4('Locale: '),
-    verbatimTextOutput('selectedLocale'), 
-    h4('Average SAT: '),
-    verbatimTextOutput('selectedSAT'),
-    h4('Region: '),
-    verbatimTextOutput('selectedRegion'),    
-    h4('Student Population: '),
-    verbatimTextOutput('selectedPopulation'),    
-    h3("Predicted ROI:"),
-    verbatimTextOutput('predictedROI')
-
-    
-  )
+#     h3('Your selections'),
+#     h4('Major: '),
+#     verbatimTextOutput('selectedMajor'), 
+#     h4('Locale: '),
+#     verbatimTextOutput('selectedLocale'), 
+#     h4('Average SAT: '),
+#     verbatimTextOutput('selectedSAT'),
+#     h4('Region: '),
+#     verbatimTextOutput('selectedRegion'),    
+#     h4('Student Population: '),
+#     verbatimTextOutput('selectedPopulation'),    
+#     h3("Predicted ROI:"),
+#     verbatimTextOutput('predictedROI')
+)),
+fluidRow(
+  column(3,
+         h5('______________________'),    
+         h3("Predicted ROI"),
+      h2(textOutput("predictedROI")))
+)
+  
 ))

@@ -7,15 +7,20 @@ library(Matrix)
 
 ######################################
 #global objects
-dfCollege <- read.csv("./fullSet.csv")
-dfCollege$LOCALE <- as.numeric(dfCollege$LOCALE)
-dfCollege$region <- as.numeric(dfCollege$region) 
-dfCollege$UNITID <- NULL
-dfCollege$INSTNM <- NULL
-dfCollege$CITY <- NULL
-dfCollege$STABBR <- NULL
-dfCollege$GRAD_DEBT_MDN_SUPP <- NULL
-dfCollege$LOCALE <- NULL
+collegeModel <- readRDS("./collegeModel.rds")
+
+#DEPRECATED TRAINING CODE ########################
+#dfCollege <- read.csv("./fullSet.csv")
+#dfCollege$LOCALE <- as.numeric(dfCollege$LOCALE)
+#dfCollege$region <- as.numeric(dfCollege$region) 
+#dfCollege$UNITID <- NULL
+#dfCollege$INSTNM <- NULL
+#dfCollege$CITY <- NULL
+#dfCollege$STABBR <- NULL
+#dfCollege$GRAD_DEBT_MDN_SUPP <- NULL
+#dfCollege$LOCALE <- NULL
+#END DEPRECATED TRAINING CODE ########################
+
 
 
 ######################################
@@ -24,18 +29,20 @@ dfCollege$LOCALE <- NULL
 #calculateROI
 calculateROI <- function(inpMajor, inpSAT, inpPopulation, inpRegion, inpPublic) {
   
-  #print('Debug 1')
+  #DEPRECATED TRAINING CODE ########################
   #e.g. train is the data
-  y = dfCollege$roi
-  train2 = subset(dfCollege, select=-c(roi))
+  #y = dfCollege$roi
+  #train2 = subset(dfCollege, select=-c(roi))
 
   #print('Debug 2')  
-  dtrn<-sparse.model.matrix(~.-1, data = train2)
-  mod = xgboost(data=dtrn, max.depth=6, eta=0.04, nthread=4, nround=100, objective = "reg:linear", 
-                eval.metric="rmse", verbose=0, subsample=0.7, label=y)
+  #dtrn<-sparse.model.matrix(~.-1, data = train2)
+  #mod = xgboost(data=dtrn, max.depth=6, eta=0.04, nthread=4, nround=100, objective = "reg:linear", 
+  #              eval.metric="rmse", verbose=0, subsample=0.7, label=y)
 
   
-  #print('Debug 3')    
+  #print('Debug 3')   
+  #END DEPRECATED CODE #############################
+  
   predictDF <- data.frame(SAT_AVG=inpSAT,
                           UGDS=inpPopulation,
                           region=as.integer(inpRegion),
@@ -80,28 +87,15 @@ calculateROI <- function(inpMajor, inpSAT, inpPopulation, inpRegion, inpPublic) 
   dtest<-sparse.model.matrix(~.-1, data = predictDF)
   
   #print('Debug 7')
-  returnROI = predict(mod,dtest)  
+  #returnROI = predict(mod,dtest)  
+  returnROI <- predict(collegeModel, dtest)
   
   
-  
-  #print(names(dfCollege))
-
-  #lmROI <- lm(roi ~ ., data=dfCollege)
-  
-  #varString <- paste0("region+SAT_AVG+LOCALE+UGDS+", inpMajor)
-  #varString <- paste0("region+SAT_AVG+LOCALE+UGDS+", "nPCIP03")
-  #lmString <- paste0("lm(roi ~ ",varString, ",data=dfCollege)")
-  #print(names(dfCollege))
-  #print(lmString)
-  #lmROI <- eval(parse(text=lmString))
-  
-  #predictString <- paste0("predict(lmROI, data.frame(region=as.numeric(inpRegion), SAT_AVG=inpSAT, LOCALE=inpLocale, UGDS=inpPopulation))")
-  #returnROI <- eval(parse(text=predictString))
-  
-  ### WORKING CODE ###
+ 
+  ### LINEAR MODEL CODE ###
   #lmROI <- lm(roi ~ region+SAT_AVG+LOCALE+UGDS, data=dfCollege)  
   #returnROI <- predict(lmROI, data.frame(nPCIP11=1,region=as.numeric(inpRegion), SAT_AVG=inpSAT, LOCALE=inpLocale, UGDS=inpPopulation, isPublic=as.numeric(inpPublic)))
-  ### END WORKING CODE ###
+  ### END LINEAR MODEL CODE ###
   
   return(returnROI)
 }

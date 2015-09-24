@@ -1,5 +1,9 @@
 # Cost of College
 
+[Final Presentation with link to the Shiny app](http://rpubs.com/coursera-2015/JHU-DaSH)
+
+## Background:
+
 [App that DOE already built](https://collegescorecard.ed.gov/)
 
 ## Ideas:
